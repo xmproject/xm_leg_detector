@@ -33,7 +33,7 @@
  *********************************************************************/
 
 
-#include <leg_detector/calc_leg_features.h>
+#include <xm_leg_detector/calc_leg_features.h>
 
 #include "opencv/cxcore.h"
 #include "opencv/cv.h"

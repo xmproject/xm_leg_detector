@@ -33,9 +33,9 @@
  *********************************************************************/
 #include <ros/ros.h>
 
-#include <leg_detector/LegDetectorConfig.h>
-#include <leg_detector/laser_processor.h>
-#include <leg_detector/calc_leg_features.h>
+#include <xm_leg_detector/LegDetectorConfig.h>
+#include <xm_leg_detector/laser_processor.h>
+#include <xm_leg_detector/calc_leg_features.h>
 
 #include <opencv/cxcore.h>
 #include <opencv/cv.h>
@@ -247,7 +247,7 @@ public:
 	ros::Publisher markers_pub_;
 	ros::Publisher leg_scanfilter_;
 
-	dynamic_reconfigure::Server<leg_detector::LegDetectorConfig> server_;
+	dynamic_reconfigure::Server<xm_leg_detector::LegDetectorConfig> server_;
 
 	message_filters::Subscriber<people_msgs::PositionMeasurement> people_sub_;
 	message_filters::Subscriber<sensor_msgs::LaserScan> laser_sub_;
@@ -295,7 +295,7 @@ public:
 		laser_notifier_.setTolerance(ros::Duration(0.01));
 
 		//ROS_INFO("spot 1");
-		dynamic_reconfigure::Server<leg_detector::LegDetectorConfig>::CallbackType f;
+		dynamic_reconfigure::Server<xm_leg_detector::LegDetectorConfig>::CallbackType f;
 		f = boost::bind(&LegDetector::configure, this, _1, _2);
 		server_.setCallback(f);
 
@@ -305,7 +305,7 @@ public:
 	~LegDetector() {
 	}
 
-	void configure(leg_detector::LegDetectorConfig &config, uint32_t level) {
+	void configure(xm_leg_detector::LegDetectorConfig &config, uint32_t level) {
 		connected_thresh_ = config.connection_threshold;
 		min_points_per_group = config.min_points_per_group;
 		leg_reliability_limit_ = config.leg_reliability_limit;

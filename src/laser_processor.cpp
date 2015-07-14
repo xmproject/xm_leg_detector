@@ -33,7 +33,7 @@
  *********************************************************************/
 
 
-#include <leg_detector/laser_processor.h>
+#include <xm_leg_detector/laser_processor.h>
 
 #include <stdexcept>
 
